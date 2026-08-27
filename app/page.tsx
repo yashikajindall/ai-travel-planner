@@ -1,4 +1,10 @@
+"use client";
+
+import { useState } from "react";
 export default function Home() {
+  const [destination, setDestination] = useState("");
+  const [budget, setBudget] = useState("");
+
   return (
     <main className="min-h-screen bg-slate-50 flex items-center justify-center px-6">
       <div className="w-full max-w-2xl">
@@ -20,9 +26,11 @@ export default function Home() {
             </label>
 
             <input
-              type="text"
-              placeholder="e.g. Paris"
-              className="w-full border border-slate-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-slate-900"
+            type="text"
+            placeholder="e.g. Paris"
+            value={destination}
+            onChange={(e) => setDestination(e.target.value)}
+            className="w-full border border-slate-300 rounded-lg px-4 py-3 text-slate-900 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-slate-900"
             />
           </div>
 
@@ -34,13 +42,19 @@ export default function Home() {
             <input
               type="number"
               placeholder="e.g. 1200"
-              className="w-full border border-slate-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-slate-900"
+              value={budget}
+              onChange={(e) => setBudget(e.target.value)}
+              className="w-full border border-slate-300 rounded-lg px-4 py-3 text-slate-900 placeholder:text-slate-400 outline-none focus:ring-2 focus:ring-slate-900"
             />
           </div>
 
-          <button className="w-full bg-slate-900 text-white py-3 rounded-lg font-medium hover:bg-slate-800 transition">
+          <button
+            className="w-full bg-slate-900 text-white py-3 rounded-lg font-medium hover:bg-slate-800 transition">
             Plan My Trip
           </button>
+          <p className="mt-4 text-sm text-slate-500">
+  Destination: {destination} | Budget: {budget}
+</p>
         </div>
       </div>
     </main>
